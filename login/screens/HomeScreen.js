@@ -8,235 +8,338 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
+
 import { LinearGradient } from 'expo-linear-gradient';
 
 const HomeScreen = ({ navigation }) => {
+
   const btnScale = useRef(new Animated.Value(1)).current;
   const [btnPressed, setBtnPressed] = useState(false);
 
   const handlePressIn = () => {
+
     setBtnPressed(true);
-    Animated.spring(btnScale, { toValue: 0.97, useNativeDriver: false }).start(); // ← fix
+
+    Animated.spring(btnScale, {
+      toValue: 0.96,
+      useNativeDriver: false,
+    }).start();
+
   };
+
   const handlePressOut = () => {
+
     setBtnPressed(false);
-    Animated.spring(btnScale, { toValue: 1, useNativeDriver: false }).start(); // ← fix
+
+    Animated.spring(btnScale, {
+      toValue: 1,
+      useNativeDriver: false,
+    }).start();
+
   };
 
   return (
+
     <View style={styles.root}>
 
-      {/* ── BACKGROUND LAYER ── */}
+      {/* BACKGROUND */}
       <LinearGradient
-        colors={['#0a0a1a', '#12083a', '#0D0D0D']}
+        colors={['#050510', '#12083a', '#0D0D0D']}
         style={StyleSheet.absoluteFill}
       />
+
       <View style={[styles.orb, styles.orb1]} />
       <View style={[styles.orb, styles.orb2]} />
       <View style={[styles.orb, styles.orb3]} />
 
-      {/* ── HEADER ── */}
+      {/* HEADER */}
       <View style={styles.header}>
+
         <Image
-          source={require('../assets/logo.png')} // ← fix
+          source={require('../assets/logo.png')}
           style={styles.logo}
           resizeMode="contain"
         />
+
         <View style={styles.statusBadge}>
+
           <View style={styles.statusDot} />
-          <Text style={styles.statusText}>ONLINE</Text>
+
+          <Text style={styles.statusText}>
+            AVES
+          </Text>
+
         </View>
+
       </View>
 
-      {/* ── SCROLLABLE CONTENT ── */}
+      {/* SCROLL */}
       <ScrollView
         style={styles.scroll}
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
 
-        {/* Hero section */}
+        {/* HERO */}
         <View style={styles.heroSection}>
-          <Text style={styles.tagline}>// NEURAL ACCESS v3.0</Text>
-          <Text style={styles.heroTitle}>{"Welcome\nback."}</Text>
-          <Text style={styles.heroSub}>
-            You are connected to a secure, encrypted session. All systems nominal.
+
+          <Text style={styles.tagline}>
+            // BIRD GALLERY
           </Text>
+
+          <Text style={styles.heroTitle}>
+            {"Explora\nlas aves"}
+          </Text>
+
+          <Text style={styles.heroSub}>
+            Descubre especies increíbles, colores únicos
+            y la belleza de las aves del mundo.
+          </Text>
+
         </View>
 
-        {/* Stats row */}
-        <View style={styles.statsRow}>
-          <View style={styles.statCard}>
-            <Text style={styles.statValue}>98.6%</Text>
-            <Text style={styles.statLabel}>UPTIME</Text>
-          </View>
-          <View style={[styles.statCard, styles.statCardAccent]}>
-            <Text style={[styles.statValue, styles.statValueAccent]}>ACTIVE</Text>
-            <Text style={styles.statLabel}>SESSION</Text>
-          </View>
-          <View style={styles.statCard}>
-            <Text style={styles.statValue}>v3.0</Text>
-            <Text style={styles.statLabel}>BUILD</Text>
-          </View>
-        </View>
-
-        {/* Divider */}
+        {/* DIVIDER */}
         <View style={styles.divider}>
+
           <View style={styles.dividerLine} />
-          <Text style={styles.dividerText}>MODULES</Text>
+
+          <Text style={styles.dividerText}>
+            GALERÍA
+          </Text>
+
           <View style={styles.dividerLine} />
+
         </View>
 
-        {/* Feature cards */}
-        <View style={styles.cardGrid}>
-          <View style={styles.featureCard}>
-            <View style={[styles.cardIcon, { backgroundColor: 'rgba(91,44,213,0.2)' }]} />
-            <View style={styles.cardTextWrap}>
-              <Text style={styles.cardTitle}>Dashboard</Text>
-              <Text style={styles.cardDesc}>
-                Monitor real-time metrics and system health across all nodes.
+        {/* GALERIA 2x2 */}
+        <View style={styles.galleryGrid}>
+
+          {/* CARD 1 */}
+          <View style={styles.birdCard}>
+
+            <Image
+              source={require('../assets/logo.png')}
+              style={styles.birdImage}
+              resizeMode="cover"
+            />
+
+            <View style={styles.cardOverlay}>
+
+              <Text style={styles.birdTitle}>
+                Tucán
               </Text>
-            </View>
-          </View>
 
-          <View style={styles.featureCard}>
-            <View style={[styles.cardIcon, { backgroundColor: 'rgba(255,214,10,0.15)' }]} />
-            <View style={styles.cardTextWrap}>
-              <Text style={styles.cardTitle}>Analytics</Text>
-              <Text style={styles.cardDesc}>
-                Deep insights into usage patterns and performance data.
+              <Text style={styles.birdDesc}>
+                Ave tropical colorida.
               </Text>
+
             </View>
+
           </View>
 
-          <View style={styles.featureCard}>
-            <View style={[styles.cardIcon, { backgroundColor: 'rgba(91,44,213,0.15)' }]} />
-            <View style={styles.cardTextWrap}>
-              <Text style={styles.cardTitle}>Settings</Text>
-              <Text style={styles.cardDesc}>
-                Manage your profile, security preferences, and integrations.
+          {/* CARD 2 */}
+          <View style={styles.birdCard}>
+
+            <Image
+              source={require('../assets/logo.png')}
+              style={styles.birdImage}
+              resizeMode="cover"
+            />
+
+            <View style={styles.cardOverlay}>
+
+              <Text style={styles.birdTitle}>
+                Guacamayo
               </Text>
+
+              <Text style={styles.birdDesc}>
+                Plumaje vibrante y exótico.
+              </Text>
+
             </View>
+
           </View>
+
+          {/* CARD 3 */}
+          <View style={styles.birdCard}>
+
+            <Image
+              source={require('../assets/logo.png')}
+              style={styles.birdImage}
+              resizeMode="cover"
+            />
+
+            <View style={styles.cardOverlay}>
+
+              <Text style={styles.birdTitle}>
+                Colibrí
+              </Text>
+
+              <Text style={styles.birdDesc}>
+                Pequeño y veloz.
+              </Text>
+
+            </View>
+
+          </View>
+
+          {/* CARD 4 */}
+          <View style={styles.birdCard}>
+
+            <Image
+              source={require('../assets/logo.png')}
+              style={styles.birdImage}
+              resizeMode="cover"
+            />
+
+            <View style={styles.cardOverlay}>
+
+              <Text style={styles.birdTitle}>
+                Águila
+              </Text>
+
+              <Text style={styles.birdDesc}>
+                Elegancia y poder.
+              </Text>
+
+            </View>
+
+          </View>
+
         </View>
 
-        {/* Divider */}
-        <View style={[styles.divider, { marginTop: 8 }]}>
-          <View style={styles.dividerLine} />
-          <Text style={styles.dividerText}>SESSION</Text>
-          <View style={styles.dividerLine} />
-        </View>
+        {/* BUTTON */}
+        <Animated.View
+          style={[
+            styles.btnWrap,
+            {
+              transform: [{ scale: btnScale }],
+            },
+          ]}
+        >
 
-        {/* Info row */}
-        <View style={styles.infoRow}>
-          <View style={styles.infoItem}>
-            <Text style={styles.infoLabel}>ENCRYPTION</Text>
-            <Text style={styles.infoValue}>AES-256</Text>
-          </View>
-          <View style={styles.infoSep} />
-          <View style={styles.infoItem}>
-            <Text style={styles.infoLabel}>PROTOCOL</Text>
-            <Text style={styles.infoValue}>TLS 1.3</Text>
-          </View>
-          <View style={styles.infoSep} />
-          <View style={styles.infoItem}>
-            <Text style={styles.infoLabel}>REGION</Text>
-            <Text style={styles.infoValue}>US-EAST</Text>
-          </View>
-        </View>
-
-        {/* Sign out button */}
-        <Animated.View style={[styles.btnWrap, { transform: [{ scale: btnScale }] }]}>
           <TouchableOpacity
-            style={[styles.btnSignOut, btnPressed && styles.btnSignOutActive]}
+            style={[
+              styles.btnSignOut,
+              btnPressed && styles.btnSignOutActive,
+            ]}
             onPressIn={handlePressIn}
             onPressOut={handlePressOut}
             onPress={() => navigation.goBack()}
             activeOpacity={1}
           >
-            <Text style={[styles.btnSignOutText, btnPressed && styles.btnSignOutTextActive]}>
-              Cerrar sesión
+
+            <Text
+              style={[
+                styles.btnSignOutText,
+                btnPressed && styles.btnSignOutTextActive,
+              ]}
+            >
+              Volver
             </Text>
+
           </TouchableOpacity>
+
         </Animated.View>
 
-        {/* Footer */}
+        {/* FOOTER */}
         <View style={styles.footer}>
+
           <View style={styles.footerDot} />
-          <Text style={styles.footerText}>ENCRYPTED · SECURE CONNECTION</Text>
+
+          <Text style={styles.footerText}>
+            REACT NATIVE · BIRD UI
+          </Text>
+
         </View>
 
       </ScrollView>
+
     </View>
+
   );
 };
 
 const styles = StyleSheet.create({
+
   root: {
     flex: 1,
     backgroundColor: '#0D0D0D',
   },
 
-  /* ── BACKGROUND ORBS ── */
+  /* BACKGROUND */
   orb: {
     position: 'absolute',
     borderRadius: 999,
   },
+
   orb1: {
-    width: 280,
-    height: 280,
+    width: 260,
+    height: 260,
     backgroundColor: 'rgba(91,44,213,0.18)',
-    top: -60,
-    right: -80,
+    top: -80,
+    right: -70,
   },
+
   orb2: {
     width: 180,
     height: 180,
     backgroundColor: 'rgba(255,214,10,0.07)',
-    bottom: 120,
+    bottom: 100,
     left: -60,
   },
+
   orb3: {
-    width: 120,
-    height: 120,
+    width: 140,
+    height: 140,
     backgroundColor: 'rgba(91,44,213,0.12)',
-    bottom: 300,
+    bottom: 260,
     right: 20,
   },
 
-  /* ── HEADER ── */
+  /* HEADER */
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+
     paddingHorizontal: 24,
     paddingTop: 56,
-    paddingBottom: 16,
+    paddingBottom: 18,
+
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(91,44,213,0.15)',
   },
+
   logo: {
     width: 100,
-    height: 32,
+    height: 40,
     tintColor: '#fff',
   },
+
   statusBadge: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
+
     backgroundColor: 'rgba(91,44,213,0.15)',
+
     paddingHorizontal: 10,
     paddingVertical: 5,
+
     borderRadius: 20,
+
     borderWidth: 1,
     borderColor: 'rgba(91,44,213,0.3)',
   },
+
   statusDot: {
     width: 5,
     height: 5,
     borderRadius: 3,
     backgroundColor: '#5B2CD5',
   },
+
   statusText: {
     fontSize: 9,
     fontWeight: '700',
@@ -244,18 +347,22 @@ const styles = StyleSheet.create({
     letterSpacing: 1.5,
   },
 
-  /* ── SCROLL ── */
-  scroll: { flex: 1 },
-  scrollContent: {
-    paddingHorizontal: 24,
-    paddingBottom: 48,
+  /* SCROLL */
+  scroll: {
+    flex: 1,
   },
 
-  /* ── HERO ── */
-  heroSection: {
-    paddingTop: 36,
-    paddingBottom: 28,
+  scrollContent: {
+    paddingHorizontal: 20,
+    paddingBottom: 40,
   },
+
+  /* HERO */
+  heroSection: {
+    paddingTop: 34,
+    paddingBottom: 24,
+  },
+
   tagline: {
     fontSize: 10,
     fontWeight: '700',
@@ -263,158 +370,104 @@ const styles = StyleSheet.create({
     color: '#5B2CD5',
     marginBottom: 12,
   },
+
   heroTitle: {
-    fontSize: 40,
+    fontSize: 42,
     fontWeight: '800',
     color: '#fff',
-    lineHeight: 44,
-    letterSpacing: -1,
+    lineHeight: 46,
     marginBottom: 14,
   },
+
   heroSub: {
     fontSize: 13,
-    color: 'rgba(255,255,255,0.35)',
+    color: 'rgba(255,255,255,0.4)',
     lineHeight: 20,
-    maxWidth: 280,
+    maxWidth: 300,
   },
 
-  /* ── STATS ── */
-  statsRow: {
-    flexDirection: 'row',
-    gap: 10,
-    marginBottom: 28,
-  },
-  statCard: {
-    flex: 1,
-    backgroundColor: 'rgba(255,255,255,0.04)',
-    borderWidth: 1,
-    borderColor: 'rgba(91,44,213,0.2)',
-    borderRadius: 10,
-    paddingVertical: 14,
-    alignItems: 'center',
-  },
-  statCardAccent: {
-    backgroundColor: 'rgba(91,44,213,0.12)',
-    borderColor: 'rgba(91,44,213,0.5)',
-  },
-  statValue: {
-    fontSize: 15,
-    fontWeight: '800',
-    color: '#fff',
-    letterSpacing: -0.5,
-    marginBottom: 4,
-  },
-  statValueAccent: {
-    color: '#5B2CD5',
-  },
-  statLabel: {
-    fontSize: 9,
-    fontWeight: '600',
-    color: 'rgba(255,255,255,0.3)',
-    letterSpacing: 1.5,
-  },
-
-  /* ── DIVIDER ── */
+  /* DIVIDER */
   divider: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,
     marginBottom: 20,
   },
+
   dividerLine: {
     flex: 1,
     height: 1,
-    backgroundColor: 'rgba(255,255,255,0.07)',
+    backgroundColor: 'rgba(255,255,255,0.08)',
   },
+
   dividerText: {
     fontSize: 9,
     fontWeight: '700',
-    color: 'rgba(255,255,255,0.2)',
+    color: 'rgba(255,255,255,0.25)',
     letterSpacing: 2,
   },
 
-  /* ── FEATURE CARDS ── */
-  cardGrid: {
-    gap: 10,
-    marginBottom: 28,
-  },
-  featureCard: {
-    backgroundColor: 'rgba(255,255,255,0.03)',
-    borderWidth: 1,
-    borderColor: 'rgba(91,44,213,0.2)',
-    borderRadius: 12,
-    padding: 18,
+  /* GALLERY 2x2 */
+  galleryGrid: {
     flexDirection: 'row',
-    alignItems: 'center',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
     gap: 14,
+    marginBottom: 30,
   },
-  cardIcon: {
-    width: 36,
-    height: 36,
-    borderRadius: 10,
-    flexShrink: 0,
+
+  birdCard: {
+    width: '47%',
+    backgroundColor: 'rgba(255,255,255,0.04)',
+
+    borderRadius: 18,
+    overflow: 'hidden',
+
+    borderWidth: 1,
+    borderColor: 'rgba(91,44,213,0.18)',
   },
-  cardTextWrap: {
-    flex: 1,
+
+  birdImage: {
+    width: '100%',
+    height: 150,
   },
-  cardTitle: {
-    fontSize: 14,
-    fontWeight: '700',
+
+  cardOverlay: {
+    padding: 14,
+  },
+
+  birdTitle: {
     color: '#fff',
-    marginBottom: 3,
+    fontSize: 15,
+    fontWeight: '700',
+    marginBottom: 4,
   },
-  cardDesc: {
+
+  birdDesc: {
+    color: 'rgba(255,255,255,0.35)',
     fontSize: 11,
-    color: 'rgba(255,255,255,0.3)',
     lineHeight: 16,
   },
 
-  /* ── INFO ROW ── */
-  infoRow: {
-    flexDirection: 'row',
-    backgroundColor: 'rgba(255,255,255,0.03)',
-    borderWidth: 1,
-    borderColor: 'rgba(91,44,213,0.15)',
-    borderRadius: 10,
-    paddingVertical: 16,
-    marginBottom: 28,
-  },
-  infoItem: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  infoSep: {
-    width: 1,
-    backgroundColor: 'rgba(255,255,255,0.07)',
-    marginVertical: 4,
-  },
-  infoLabel: {
-    fontSize: 9,
-    fontWeight: '600',
-    color: 'rgba(255,255,255,0.25)',
-    letterSpacing: 1.5,
-    marginBottom: 5,
-  },
-  infoValue: {
-    fontSize: 13,
-    fontWeight: '700',
-    color: '#fff',
-    letterSpacing: 0.5,
+  /* BUTTON */
+  btnWrap: {
+    marginBottom: 26,
   },
 
-  /* ── SIGN OUT BUTTON ── */
-  btnWrap: {
-    marginBottom: 32,
-  },
   btnSignOut: {
     backgroundColor: '#5B2CD5',
-    borderRadius: 8,
+
+    borderRadius: 12,
+
     paddingVertical: 15,
+
     alignItems: 'center',
   },
+
   btnSignOutActive: {
     backgroundColor: '#FFD60A',
   },
+
   btnSignOutText: {
     color: '#fff',
     fontSize: 12,
@@ -422,28 +475,32 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
     textTransform: 'uppercase',
   },
+
   btnSignOutTextActive: {
     color: '#0D0D0D',
   },
 
-  /* ── FOOTER ── */
+  /* FOOTER */
   footer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 6,
   },
+
   footerDot: {
     width: 5,
     height: 5,
     borderRadius: 3,
     backgroundColor: '#5B2CD5',
   },
+
   footerText: {
     fontSize: 9,
     color: 'rgba(255,255,255,0.2)',
     letterSpacing: 1,
   },
+
 });
 
 export default HomeScreen;

@@ -13,22 +13,25 @@ import * as Yup from 'yup';
 
 import CustomButton from '../components/CustomButton';
 import { C, F } from '../styles/theme';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { auth, db } from '../services/firebaseConfig';
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
-    .email('Correo inválido')
-    .required('El correo es obligatorio'),
+    .email('error, correo invalido')
+    .required('obligatorio, ingrese su correo'),
 
   password: Yup.string()
-    .min(6, 'Mínimo 6 caracteres')
-    .required('La contraseña es obligatoria'),
+    .min(6, 'error, contraseña muy corta')
+    .required('obligatorio, ingrese su contraseña'),
 });
 
 export default function LoginScreen({ navigation }) {
   const handleLogin = async (values) => {
-    console.log('===================');
-    console.log('LOGIN');
-    console.log('===================');
+    console.log('');
+    console.log('logueado       :D');
+    console.log('');
 
     console.table(values);
 
@@ -37,11 +40,11 @@ export default function LoginScreen({ navigation }) {
         abortEarly: false,
       });
 
-      console.log('✅ Validación Yup correcta');
+      console.log('logrado     c:');
 
       Alert.alert(
-        'Acceso Correcto',
-        'Bienvenido al sistema'
+        'logrado c:',
+        'bienvenida'
       );
 
       navigation.navigate('Home', {
@@ -50,7 +53,7 @@ export default function LoginScreen({ navigation }) {
       });
 
     } catch (error) {
-      console.log('❌ Errores Yup');
+      console.log('aHHHHHHHHHHHHHHHHHHHHH');
 
       error.inner.forEach((err) => {
         console.log(
@@ -86,11 +89,11 @@ export default function LoginScreen({ navigation }) {
           />
 
           <Text style={styles.title}>
-            LOGIN
+            Inicio de Sesión
           </Text>
 
           <Text style={styles.label}>
-            CORREO
+            correo electronico
           </Text>
 
           <TextInput
@@ -110,12 +113,12 @@ export default function LoginScreen({ navigation }) {
             </Text>
           ) : (
             <Text style={styles.helper}>
-              Ingrese un correo válido.
+             porfavor, ingrese un correo valido
             </Text>
           )}
 
           <Text style={styles.label}>
-            CONTRASEÑA
+            contraseña
           </Text>
 
           <TextInput
@@ -135,7 +138,7 @@ export default function LoginScreen({ navigation }) {
             </Text>
           ) : (
             <Text style={styles.helper}>
-              Debe tener mínimo 6 caracteres.
+              es como una seña pero en contra :P, seis caracteres
             </Text>
           )}
 

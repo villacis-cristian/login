@@ -12,6 +12,9 @@ import * as Yup from 'yup';
 
 import CustomButton from '../components/CustomButton';
 import { C, F } from '../styles/theme';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { auth, db } from '../services/firebaseConfig';
 
 const RegisterSchema = Yup.object().shape({
   username: Yup.string()
@@ -33,9 +36,9 @@ export default function RegisterScreen({
     values
   ) => {
 
-    console.log('===================');
-    console.log('REGISTER');
-    console.log('===================');
+    console.log('');
+    console.log('regristro');
+    console.log('');
 
     console.table(values);
 
@@ -49,12 +52,12 @@ export default function RegisterScreen({
       );
 
       console.log(
-        '✅ Registro válido'
+        'registrado :D'
       );
 
       Alert.alert(
         'Registro',
-        'Usuario registrado correctamente'
+        'se ha registrado correctamente c:'
       );
 
       navigation.navigate('Login');
